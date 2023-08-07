@@ -1,0 +1,198 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Big Mart Sales Prediction - Result</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            margin-top: 50px;
+        }
+
+        .display-4 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .prediction-item {
+            margin-bottom: 10px;
+        }
+
+        .compare {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body style="background-color:#33475b">
+    <div class="container text-white">
+    <h1>Result</h1>
+    {% if algorithm %}
+        <h3>Algorithm: {{ algorithm }}</h3>
+        <p>Prediction: {{ prediction }}</p>
+        <p>Accuracy: {{ accuracy }}</p>
+    {% else %}
+        <h3>No algorithm selected.</h3>
+    {% endif %}
+
+    
+    <!-- <div class="container">
+        <h1 class="display-4">Big Mart Sales Prediction - Result</h1>
+        <div class="prediction-item">
+            <strong>KNN Prediction:</strong> {{ knn_prediction }}
+        </div>
+        <div class="prediction-item">
+            <strong>Random Forest Prediction:</strong> {{ rf_prediction }}
+        </div>
+        <div class="prediction-item">
+            <strong>Linear Regression Prediction:</strong> {{ lr_prediction }}
+        </div>
+    </div> -->
+
+    <!-- <div class="compare">
+        <h2 class="display-6">Model Accuracies</h2>
+        <div class="text-center">
+            <img src="{{ url_for('static', filename='bigmart.jpg') }}" alt="Accuracy Chart">
+        </div>
+    </div>
+   
+    <div class="back">
+        <a href="{{ url_for('index') }}" class="btn btn-primary">Go Back</a>
+    </div>
+</body>
+
+
+
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Model Accuracies</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <form action="/compare" method="post"></form>
+            <h1>Model Accuracies</h1>
+
+            <h3>SVM Accuracy: {{ svm_accuracy }}</h3>
+            <h3>Random Forest Accuracy: {{ rf_accuracy }}</h3>
+            <!-- <h3>Decision Tree Accuracy: {{ dt_accuracy }}</h3>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Bar Chart</h2>
+                    <img src="{{ url_for('static', filename='barchart.jpg') }}" alt="Bar Chart">
+                </div>
+            </div>
+
+            <div class="back">
+                <a href="{{ url_for('index') }}" class="btn btn-primary">Go Back</a>
+            </div>
+        </div>
+</body>
+</html> --> 
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+
+        .chart-container {
+            width: 600px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body style="background-color:#33475b">
+    <div class="container text-white">
+        <h2>Compare Algorithms</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>KNN</h4>
+                <p>MSE: {{ knn_mse }}</p>
+            </div>
+            <div class="col-md-6">
+                <h4>Random Forest</h4>
+                <p>MSE: {{ rf_mse }}</p>
+            </div>
+            <div class="col-md-6">
+                <h4>Decision Tree</h4>
+                <p>MSE: {{ dt_mse }}</p>
+            </div>
+        </div>
+        <div class="chart-container">
+            <canvas id="barchart"></canvas>
+        </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('barchart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['KNN', 'Random Forest', 'Decision Tree'],
+            datasets: [{
+                label: 'Mean Squared Error',
+                data: [{ knn_mse }, { rf_mse }, { dt_mse }],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(75, 192, 192, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Bar Chart</h2>
+            <img src="{{ url_for('static', filename='barchart.jpg') }}" alt="Bar Chart">
+        </div>
+    </div>
+
+    <div class="back">
+        <a href="{{ url_for('index') }}" class="btn btn-primary">Go Back</a>
+    </div>
+</body>
+</html>
